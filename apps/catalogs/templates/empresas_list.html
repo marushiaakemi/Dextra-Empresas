@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+
+
+        <h3 class="card-title">Lista de Empresas</h3>
+
+
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">CNPJ</th>
+                <th scope="col">Notas Fiscais</th>
+
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for empresa in empresa %}
+            <tr>
+
+                <td> {{ empresa.nome }}</td>
+                <td> {{ empresa.CNPJ }}</td>
+                <td><a href="/notafiscal/{{ empresa.pk}}" class="btn btn-primary">Ver Detalhes</a></td>
+            </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+
+
+    </body>
+
+</html>

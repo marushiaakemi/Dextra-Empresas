@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+
+
+        <h3 class="card-title">Notas Fiscais</h3>
+
+        <div class="row">
+        <div class="cols-sm-6">
+            <form action="." method="GET" class="form-inline">
+                <input type="text" name="search" class="form-control" style = "margin-left:20px;" placeholder="Buscar numero ou nome">
+                <input type="submit" class="btn btn-primary" style="margin-left:10px;" value="Buscar">
+            </form>
+        </div>
+        </div>
+
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Empresa</th>
+                <th scope="col">Serie</th>
+                <th scope="col">Número</th>
+                <th scope="col">Nome/Descricao</th>
+                <th scope="col">Peso</th>
+                <th scope="col">Cubagem</th>
+                <th scope="col">Data</th>
+
+            </tr>
+            </thead>
+
+            <tbody>
+
+            {% for nota in empresas_notas %}
+            <tr>
+                <td> {{ nota.empresa }}</td>
+                <td> {{ nota.serie }}</td>
+                <td> {{ nota.numero }}</td>
+                <td> {{ nota.nome_descricao }}</td>
+                <td> {{ nota.peso }}</td>
+                <td> {{ nota.cubagem }}</td>
+                <td> {{ nota.data }}</td>
+            </tr>
+
+            {% endfor %}
+
+            <div class="pagination" style="margin-bottom:20px;">
+                <span class="step-links" style="position: relative; margin-left: auto; margin-right: auto;">
+                    {% if empresas_notas.has_previous %}
+                        <a href="?page={{ empresas_notas.previous_page_number }}">Anterior </a>
+                    {% endif %}
+
+                    <span class="current">
+                        {{ empresas_notas.number }} de {{ empresas_notas.paginator.num_pages }}
+                    </span>
+
+                    {% if empresas_notas.has_next %}
+                        <a href="?page={{ empresas_notas.next_page_number }}">Proximo </a>
+                    {% endif %}
+
+                </span>
+
+            </div>
+
+            </tbody>
+
+        </table>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+    </body>
+
+</html>
